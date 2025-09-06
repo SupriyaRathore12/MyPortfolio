@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { Link } from "react-scroll";
 
 const Navbar = () => {
-  const [menu, openMenu] = useState(false);
-  const [showMenu, setshowMenu] = useState(true);
+  const [menu, setMenu] = useState(false);
+
 
   const navItems=[
     {id:"home" ,label:"HOME"},
@@ -38,16 +38,17 @@ const Navbar = () => {
 
         ))}
       </ul>
-      {showMenu ? (
-        <RiMenu2Line
+      {menu ? (
+        <RiCloseLine
           size={30}
-          className='md:hidden absolute right-10 top-6 transition-all duration-300 '
-          onClick={() => {
-            openMenu(!menu);
-            setshowMenu(!showMenu)
-          }} />
+          className='md:hidden absolute right-10 top-6 transition-all duration-300 cursor-pointer '
+          onClick={() =>setMenu(false) 
+            
+          } />
       ) : (
-        <RiCloseLine size={30} className='md:hidden absolute right-10 top-6 transition-all duration-300 ' />
+        <RiMenu2Line size={30} className='md:hidden absolute right-10 top-6 transition-all duration-300 cursor-pointer '
+        onClick={()=>setMenu(true)}
+         />
       )
       }
     </nav>
